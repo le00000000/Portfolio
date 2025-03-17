@@ -1,6 +1,6 @@
 # Ignore compiled CSS and map files
-*.css
-*.css.map
+# *.css
+# *.css.map
 
 # Ignore virtual environments
 venv/
