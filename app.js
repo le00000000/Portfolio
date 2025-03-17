@@ -1,5 +1,6 @@
 const sections = document.querySelectorAll('.section');
 const sectBtns = document.querySelectorAll('.control');
+const themeBtn = document.querySelector(".theme-btn");
 const blogs = document.querySelectorAll('.blog');
 
 // Function to load the correct section based on the URL parameter
@@ -77,6 +78,32 @@ function loadBlog() {
         });
     });
 }
+
+//Toggle theme functionality
+
+// Select the body element to apply the theme
+let element = document.body;
+
+// Retrieve and apply the saved theme from localStorage to body(if it exists)
+const savedTheme = localStorage.getItem("theme")
+if (savedTheme) {
+    element.classList.add(savedTheme);
+}
+
+// Add an event listener to handle theme toggling
+themeBtn.addEventListener("click", () =>{
+    // Toggle the "light-mode" class on the body
+    element.classList.toggle("light-mode");
+
+    if (element.classList.contains("light-mode")) {
+        // Check if "light-mode" is currently applied and save theme in localStorage
+        localStorage.setItem("theme", "light-mode");
+    }
+    else {
+        // If switching back to dark mode, remove the saved theme
+        localStorage.removeItem("theme");
+    }
+});
 
 // Run functions when the DOM content is fully loaded
 document.addEventListener("DOMContentLoaded", function () {

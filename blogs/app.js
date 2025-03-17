@@ -1,5 +1,6 @@
 const sections = document.querySelectorAll('.section');
 const sectBtns = document.querySelectorAll('.control');
+const themeBtn = document.querySelector(".theme-btn");
 
 // Function to fetch and load sections dynamically from index.html
 function loadSections() {
@@ -29,6 +30,7 @@ function loadSections() {
 function loadSectionFromURL() {
     // Get the current URL path
     const path = window.location.pathname;
+    console.log(path)
 
     // Split the path into segments based on '/'
     const pathSegments = path.split("/");
@@ -36,11 +38,11 @@ function loadSectionFromURL() {
     // Extract the first segment after the root (e.g., 'blogs' from '/blogs/lighting_system.html')
     const section = pathSegments[1]; 
 
-    // If the section is 'blogs', display the main section instead
-    if (section === "blogs") {
-        sectionToDisplay = "main" // Set the section to 'main'
-        showSection(sectionToDisplay); // Call function to show the section
+    // If the section is 'blogs' or 'construction', display the main section instead
+    if (section === "blogs" || "construction") {
+        sectionToDisplay = "main" // Set the section to 'main
     }
+    showSection(sectionToDisplay); // Call function to show the section
 }
 
 // Function to display the correct section
@@ -78,6 +80,30 @@ function PageTransitions(){
         });
     });
 }
+
+// Toggle theme functionality
+
+// Select the body element to apply the theme
+let element = document.body;
+
+// Retrieve and apply the saved theme from localStorage to body(if it exists)
+const savedTheme = localStorage.getItem("theme")
+if (savedTheme) {
+    element.classList.add(savedTheme);
+}
+
+// Add an event listener to handle theme toggling
+themeBtn.addEventListener("click", () =>{
+    if (element.classList.contains("light-mode")) {
+        // If the current theme is light mode, switch to default dark mode
+        element.classList.remove("light-mode"); // Remove light mode class
+        localStorage.removeItem("theme"); // Remove the theme from localStorage
+    } else {
+        // If no theme or dark mode is active, switch to light mode
+        element.classList.add("light-mode"); // Apply light mode class
+        localStorage.setItem("theme", "light-mode"); // Save the theme in localStorage
+    }
+});
 
 // Run functions when the DOM content is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
