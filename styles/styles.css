@@ -711,6 +711,12 @@ section {
   padding: 1rem;
 }
 
+button {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
 .construction-sec {
   position: relative;
   padding: 1rem 10rem;

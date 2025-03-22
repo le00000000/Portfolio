@@ -467,22 +467,26 @@
                     </div>
                 </div>
                 <div class="right-contact">
-                    <form name="contact" method="POST" data-netlify="true" netlify class="contact-form">
+                    <form name="contact" method="POST" data-netlify="true" 
+                    data-netlify-recaptcha="true" netlify class="contact-form">
                         <div class="input-control i-c-2">
-                            <input type="text" required placeholder="YOUR NAME">
-                            <input type="email" required placeholder="YOUR EMAIL">
+                            <input type="text" name="name" placeholder="YOUR NAME" required>
+                            <input type="email" name="email" placeholder="YOUR EMAIL" required>
                         </div>
                         <div class="input-control">
                             <input type="text" required placeholder="ENTER SUBJECT">
                         </div>
                         <div class="input-control">
-                            <textarea name="" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
+                            <textarea name="message" id="" cols="15" rows="8" placeholder="Message Here..." required></textarea>
                         </div>
                         <div class="submit-btn">
-                            <a href="" class="main-btn">
+                            <button class="main-btn"
+                            data-sitekey="6LeIR_sqAAAAAESDs8GT-ouDIOhegPppDvaEt6Fw"
+                            data-callback="onSubmit"
+                            data-action="submit">
                                 <span class="btn-text">Submit</span>
                                 <span class="btn-icon"><i class="fas fa-submit"></i></span>
-                            </a>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -513,5 +517,6 @@
 </div>
 
     <script src="app.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async></script>
 </body>
 </html>

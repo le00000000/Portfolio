@@ -720,6 +720,12 @@ section{
     }
 }
 
+button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
 // Page Under Construction Sec
 .construction-sec {
     position: relative;
